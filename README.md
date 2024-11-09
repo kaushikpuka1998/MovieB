@@ -1,3 +1,4 @@
 # MovieB
 
-![Screenshot from 2024-11-10 02-56-06](https://github.com/user-attachments/assets/89f8974e-3a3f-4f48-922e-2db0a2b7b4a2)
+
+![Screenshot from 2024-11-10 03-46-08](https://github.com/user-attachments/assets/6bfd120b-d722-42dd-8481-7c8b6699ecae)
