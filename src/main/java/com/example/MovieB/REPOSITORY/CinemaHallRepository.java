@@ -7,9 +7,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface CinemaHallRepository extends JpaRepository<CinemaHall, Long> {
 
-    public CinemaHall findByName(String name);
-
-    public CinemaHall save(CinemaHall cinemaHall);
-
-    public void delete(CinemaHall cinemaHall);
+    CinemaHall findByName(String name);
 }

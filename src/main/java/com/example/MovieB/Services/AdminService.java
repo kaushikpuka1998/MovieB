@@ -21,6 +21,10 @@ public class AdminService {
 
 
     public Show addShow(Show show, List<ShowSeat> showSeats) {
+        if (show.getCinemaHall().getId() == null) {
+            CinemaHall savedCinemaHall = cinemaHallService.addCinemaHall(show.getCinemaHall());
+            show.setCinemaHall(savedCinemaHall);
+        }
         return showService.addShow(show, showSeats);
     }
 
