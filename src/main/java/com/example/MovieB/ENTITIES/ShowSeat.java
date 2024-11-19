@@ -7,21 +7,19 @@ import java.util.List;
 
 @Entity
 @Data
-public class Booking {
+public class ShowSeat {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String bookingDate;
-
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
+    private String seatNumber;
+    private boolean isAvailable;
 
     @ManyToOne
     @JoinColumn(name = "show_id")
     private Show show;
 
-    @OneToMany(mappedBy = "booking")
-    private List<ShowSeat> showSeats;
+    @ManyToOne
+    @JoinColumn(name = "booking_id")
+    private Booking booking;
 
 }

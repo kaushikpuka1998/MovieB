@@ -1,9 +1,13 @@
 package com.example.MovieB.ENTITIES;
 
 import jakarta.persistence.*;
+import lombok.Data;
+
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
+@Data
 public class Show {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,5 +22,10 @@ public class Show {
     @ManyToOne
     @JoinColumn(name = "cinema_hall_id")
     private CinemaHall cinemaHall;
+
+    @OneToMany(mappedBy = "show")
+    private List<ShowSeat> showSeats;
+
+
 
 }
