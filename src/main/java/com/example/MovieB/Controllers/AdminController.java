@@ -2,6 +2,7 @@ package com.example.MovieB.Controllers;
 
 import com.example.MovieB.ENTITIES.*;
 import com.example.MovieB.Services.AdminService;
+import com.example.MovieB.Services.KafkaProducerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Repository;
@@ -15,9 +16,14 @@ public class AdminController {
     @Autowired
     AdminService adminService;
 
+    @Autowired
+    KafkaProducerService kafkaProducerService;
+
     @PostMapping("/addCinemaHall")
     public ResponseEntity<CinemaHall> addCinemaHall(@RequestBody CinemaHall cinemaHall) {
-        return ResponseEntity.ok().body( adminService.addCinemaHall(cinemaHall));
+        CinemaHall savedCinemaHall = adminService.addCinemaHall(cinemaHall);
+        kafkaProducerService.sendMessage("cinemaHallTopic", savedCinemaHall);
+        return ResponseEntity.ok().body(savedCinemaHall);
     }
 
     @PostMapping("/addShow")
